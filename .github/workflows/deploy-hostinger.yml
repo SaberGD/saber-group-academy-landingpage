@@ -38,3 +38,18 @@ jobs:
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: ${{ secrets.HOSTINGER_FTP_SERVER_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            wp-admin/**
+            wp-admin/**/*
+            wp-content/**
+            wp-content/**/*
+            wp-includes/**
+            wp-includes/**/*
+            **/*.php
+            license.txt
+            readme.html
+            xmlrpc.php
+            .user.ini
