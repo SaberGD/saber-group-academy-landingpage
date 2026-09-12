@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Saber Group Courses Academy | Graphic Design With AI</title>
+    <meta
+      name="description"
+      content="Saber Group Courses Academy تقدم تجربة تعلم جرافيك ديزاين مدعومة بالذكاء الصناعي، بمتابعة فعلية، مشاريع عملية، ومساعد Maro AI لطلاب الأكاديمية."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F172A'/%3E%3Cpath d='M18 42 31 14h7L25 42h-7Z' fill='%232563EB'/%3E%3Cpath d='M32 50c10 0 18-7 18-18h-8c0 5-4 10-10 10-5 0-9-3-10-7h-8c1 9 8 15 18 15Z' fill='%23EC4899'/%3E%3Ccircle cx='44' cy='18' r='5' fill='%23F59E0B'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --navy: #0f172a;
+        --navy-2: #111827;
+        --blue: #2563eb;
+        --blue-2: #1d4ed8;
+        --violet: #7c3aed;
+        --pink: #ec4899;
+        --amber: #f59e0b;
+        --ink: #0f172a;
+        --muted: #5b677c;
+        --soft: #f1f5fd;
+        --paper: #ffffff;
+        --line: #dbe5f6;
+        --shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
+        --radius: 8px;
+        --container: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          "Cairo",
+          "Tajawal",
+          "Noto Kufi Arabic",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        letter-spacing: 0;
+        line-height: 1.7;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 40px));
+        margin-inline: auto;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 84svh;
+        color: #fff;
+        isolation: isolate;
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(8, 13, 28, 0.96) 0%, rgba(8, 13, 28, 0.88) 38%, rgba(8, 13, 28, 0.24) 72%),
+          url("assets/hero-saber-ai.png") center / cover no-repeat;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 150px;
+        background: linear-gradient(0deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0));
+        z-index: -1;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-block: 22px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 900;
+        font-size: 1.08rem;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        aspect-ratio: 1;
+        border-radius: var(--radius);
+        background: linear-gradient(135deg, var(--blue), var(--pink));
+        box-shadow: 0 10px 24px rgba(37, 99, 235, 0.34);
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .nav-links a:hover {
+        color: #fff;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 680px) 1fr;
+        align-items: center;
+        min-height: calc(84svh - 88px);
+        padding-block: 18px 72px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        margin: 0 0 20px;
+        padding: 9px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 0.95rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--amber);
+        box-shadow: 0 0 0 7px rgba(245, 158, 11, 0.14);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin-bottom: 22px;
+        font-size: 4.6rem;
+        line-height: 1.08;
+        font-weight: 950;
+      }
+
+      .hero p {
+        max-width: 650px;
+        margin-bottom: 32px;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 1.18rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 20px;
+        border: 1px solid transparent;
+        border-radius: var(--radius);
+        font-weight: 850;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button.primary {
+        background: #fff;
+        color: var(--navy);
+      }
+
+      .button.secondary {
+        border-color: rgba(255, 255, 255, 0.26);
+        color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+      }
+
+      .proof-strip {
+        background: var(--navy);
+        color: #fff;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .proof-item {
+        min-height: 110px;
+        padding: 20px;
+        background: var(--navy);
+      }
+
+      .proof-number {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--amber);
+        font-size: 1.35rem;
+        font-weight: 950;
+      }
+
+      .section {
+        padding-block: 84px;
+      }
+
+      .section.soft {
+        background: var(--soft);
+      }
+
+      .section.dark {
+        background: var(--navy);
+        color: #fff;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.65fr);
+        gap: 40px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      .kicker {
+        margin-bottom: 10px;
+        color: var(--blue);
+        font-weight: 900;
+      }
+
+      .dark .kicker {
+        color: var(--amber);
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-size: 2.55rem;
+        line-height: 1.2;
+        font-weight: 950;
+      }
+
+      .section-head p,
+      .muted {
+        color: var(--muted);
+      }
+
+      .dark .section-head p,
+      .dark .muted {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        min-height: 260px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+      }
+
+      .card.featured {
+        background: var(--navy);
+        color: #fff;
+        border-color: var(--navy);
+        box-shadow: var(--shadow);
+      }
+
+      .card h3 {
+        margin-bottom: 12px;
+        font-size: 1.22rem;
+        line-height: 1.35;
+      }
+
+      .card p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .card.featured p {
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .tag {
+        display: inline-flex;
+        margin-bottom: 20px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.1);
+        color: var(--blue-2);
+        font-size: 0.86rem;
+        font-weight: 900;
+      }
+
+      .featured .tag {
+        background: rgba(236, 72, 153, 0.16);
+        color: #ffb8d9;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.68fr);
+        gap: 34px;
+        align-items: stretch;
+      }
+
+      .panel {
+        border-radius: var(--radius);
+        background: #fff;
+        border: 1px solid var(--line);
+        overflow: hidden;
+      }
+
+      .path {
+        display: grid;
+        gap: 1px;
+        background: var(--line);
+      }
+
+      .path-step {
+        display: grid;
+        grid-template-columns: 86px 1fr;
+        gap: 18px;
+        padding: 22px;
+        background: #fff;
+      }
+
+      .step-num {
+        display: grid;
+        place-items: center;
+        width: 60px;
+        aspect-ratio: 1;
+        border-radius: var(--radius);
+        background: var(--soft);
+        color: var(--blue);
+        font-weight: 950;
+        font-size: 1.1rem;
+      }
+
+      .path-step h3 {
+        margin-bottom: 6px;
+      }
+
+      .path-step p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .maro {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100%;
+        padding: 28px;
+        background:
+          linear-gradient(135deg, rgba(37, 99, 235, 0.92), rgba(124, 58, 237, 0.92)),
+          var(--blue);
+        color: #fff;
+      }
+
+      .maro h3 {
+        font-size: 2rem;
+        line-height: 1.25;
+        margin-bottom: 16px;
+      }
+
+      .maro p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .maro-list {
+        display: grid;
+        gap: 10px;
+        margin: 24px 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .maro-list li {
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .courses {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .course-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 320px;
+        padding: 26px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .course-card h3 {
+        margin-bottom: 12px;
+        font-size: 1.5rem;
+      }
+
+      .course-card p {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .course-card ul {
+        display: grid;
+        gap: 10px;
+        margin: auto 0 0;
+        padding: 0;
+        list-style: none;
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      .course-card li {
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .experience {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .experience-item {
+        padding: 24px;
+        border-radius: var(--radius);
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+
+      .experience-item h3 {
+        margin-bottom: 10px;
+      }
+
+      .experience-item p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .cta {
+        padding: 46px;
+        border-radius: var(--radius);
+        background:
+          linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(29, 78, 216, 0.88)),
+          var(--navy);
+        color: #fff;
+        overflow: hidden;
+      }
+
+      .cta-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .cta h2 {
+        margin-bottom: 14px;
+      }
+
+      .cta p {
+        max-width: 720px;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      footer {
+        padding-block: 30px;
+        background: #08111f;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 980px) {
+        .hero {
+          min-height: auto;
+          background-position: center right;
+        }
+
+        .hero-grid {
+          grid-template-columns: 1fr;
+          min-height: auto;
+          padding-block: 44px 70px;
+        }
+
+        h1 {
+          font-size: 3.35rem;
+        }
+
+        h2 {
+          font-size: 2.1rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .proof-grid,
+        .cards,
+        .courses {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .section-head,
+        .split,
+        .cta-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-grid .actions {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .container {
+          width: min(100% - 28px, var(--container));
+        }
+
+        .hero {
+          background:
+            linear-gradient(90deg, rgba(8, 13, 28, 0.97), rgba(8, 13, 28, 0.72)),
+            url("assets/hero-saber-ai.png") center / cover no-repeat;
+        }
+
+        .nav {
+          padding-block: 16px;
+        }
+
+        .brand {
+          font-size: 0.98rem;
+        }
+
+        h1 {
+          font-size: 2.38rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .proof-grid,
+        .cards,
+        .courses,
+        .experience {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding-block: 58px;
+        }
+
+        .path-step {
+          grid-template-columns: 1fr;
+        }
+
+        .cta {
+          padding: 28px;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container" aria-label="التنقل الرئيسي">
+        <a class="brand" href="#top" aria-label="Saber Group Courses Academy">
+          <span class="brand-mark">SG</span>
+          <span>Saber Group Courses Academy</span>
+        </a>
+        <div class="nav-links">
+          <a href="#difference">الاختلاف</a>
+          <a href="#journey">رحلة التعلم</a>
+          <a href="#courses">الكورسات</a>
+          <a href="#consultation">ابدأ</a>
+        </div>
+      </nav>
+
+      <div class="hero-grid container" id="top">
+        <div>
+          <p class="eyebrow">أول تجربة تعلم جرافيك مدعومة بالكامل بالذكاء الصناعي</p>
+          <h1>مش كورس برامج. دي رحلة تصنع مصمم فاهم السوق.</h1>
+          <p>
+            في Saber Group هتتعلم التصميم من أساسه: تفكير الحملات، بناء الأفكار،
+            تحليل الريفرنس، استخدام أدوات Adobe والذكاء الصناعي، ومشروع تخرج
+            يتعامل كأنه مشروع حقيقي من أول يوم.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#consultation">اعرف أنسب مسار ليك</a>
+            <a class="button secondary" href="#maro">جرب فكرة Maro AI</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="proof-strip" aria-label="أرقام ونقاط قوة">
+        <div class="proof-grid container">
+          <div class="proof-item">
+            <span class="proof-number">2014</span>
+            خبرة عملية في الجرافيك ديزاين
+          </div>
+          <div class="proof-item">
+            <span class="proof-number">2019</span>
+            خبرة تدريب ومتابعة طلاب
+          </div>
+          <div class="proof-item">
+            <span class="proof-number">Adobe</span>
+            مدرب معتمد رسمياً من أدوبي
+          </div>
+          <div class="proof-item">
+            <span class="proof-number">Maro</span>
+            مساعد ذكي لطلاب الأكاديمية
+          </div>
+          <div class="proof-item">
+            <span class="proof-number">Portal</span>
+            متابعة حضور وتاسكات وتقييمات
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="difference">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="kicker">ليه Saber Group مختلف؟</p>
+              <h2>بنعلّمك إزاي تفكر كمصمم، مش إزاي تحفظ زرار.</h2>
+            </div>
+            <p>
+              أغلب الأماكن بتشرح أدوات. إحنا بنبني تجربة كاملة: محتوى ثابت،
+              مدربين مساعدين على نفس النظام، متابعة فردية، مجتمع نشط، وورش
+              بتدخل على مشاريع حقيقية.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card featured">
+              <span class="tag">Design Thinking</span>
+              <h3>تفكير حملات وإعلانات</h3>
+              <p>
+                هتفهم يعني إيه فكرة إعلان، إزاي تربط التصميم بالهدف، وإزاي تعمل
+                حملة فيها لغة واحدة مش بوستات متفرقة.
+              </p>
+            </article>
+            <article class="card">
+              <span class="tag">AI Workflow</span>
+              <h3>الذكاء الصناعي داخل الشغل</h3>
+              <p>
+                ورش وتطبيقات على استخدام AI في التحليل، توليد الأفكار، بناء
+                البرومبت، وتسريع التنفيذ بنفس طريقة السوق.
+              </p>
+            </article>
+            <article class="card">
+              <span class="tag">Real Follow Up</span>
+              <h3>متابعة فعلية مش مجرد جروب</h3>
+              <p>
+                حضور، غياب، تاسكات، تقييمات، نقاط، Rank، ومتابعة فردية لنقاط
+                الضعف عشان تعرف تتحسن بخطوات واضحة.
+              </p>
+            </article>
+            <article class="card">
+              <span class="tag">Portfolio Ready</span>
+              <h3>مشروع تخرج بقوة مشروع حقيقي</h3>
+              <p>
+                بنراجع ونعدل ونقيم لحد ما المشروع يبقى جاهز يتعرض في البورتفوليو
+                ويتقدم بمستوى قوي.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section soft" id="journey">
+        <div class="container split">
+          <div>
+            <div class="section-head" style="display: block; margin-bottom: 24px">
+              <p class="kicker">رحلة التعلم</p>
+              <h2>مسار واضح من أول الأدوات لحد الشغل الاحترافي.</h2>
+              <p>
+                كل مرحلة بتبني اللي بعدها. الهدف إنك تطلع فاهم البرامج، فاهم
+                القواعد، وفاهم إزاي تحول الكلام brief لفكرة وتصميم قابل للبيع.
+              </p>
+            </div>
+
+            <div class="panel path">
+              <article class="path-step">
+                <span class="step-num">01</span>
+                <div>
+                  <h3>التأسيس التقني</h3>
+                  <p>
+                    Photoshop, Illustrator, InDesign، التعامل مع الصور، الفيكتور،
+                    الطباعة، التجهيزات، وتطبيقات عملية من أول الكورس.
+                  </p>
+                </div>
+              </article>
+              <article class="path-step">
+                <span class="step-num">02</span>
+                <div>
+                  <h3>أساسيات التصميم</h3>
+                  <p>
+                    تكوين، ألوان، هرم بصري، أخطاء شائعة، وتحليل التصاميم عشان
+                    تفهم ليه التصميم نجح أو فشل.
+                  </p>
+                </div>
+              </article>
+              <article class="path-step">
+                <span class="step-num">03</span>
+                <div>
+                  <h3>ورش احترافية</h3>
+                  <p>
+                    Social media، الهويات، Behance، portfolio، AI، التفكير
+                    الإبداعي، وسوق العمل بطريقة عملية مش محفوظة.
+                  </p>
+                </div>
+              </article>
+              <article class="path-step">
+                <span class="step-num">04</span>
+                <div>
+                  <h3>مشروع التخرج</h3>
+                  <p>
+                    مشروع يحاكي شغل العملاء الحقيقي: brief، research، reference،
+                    تنفيذ، مراجعة، تطوير، وتجهيز للعرض.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <aside class="maro" id="maro">
+            <div>
+              <p class="kicker" style="color: #ffd18a">Maro AI</p>
+              <h3>مساعد ذكي مكمل معاك طول الرحلة.</h3>
+              <p>
+                Maro مش رد آلي. ده مساعد متدرب على طريقة Saber Group يساعد
+                الطالب يفهم، يحلل، ويحل المشاكل أسرع.
+              </p>
+              <ul class="maro-list">
+                <li>تحليل التصميم وإظهار نقاط القوة والضعف</li>
+                <li>حل مشاكل تقنية في البرامج والأدوات</li>
+                <li>توليد prompts تساعد في التنفيذ والأفكار</li>
+                <li>اقتراح خطوات تعلم حسب احتياج الطالب</li>
+              </ul>
+            </div>
+            <a class="button primary" href="#consultation">اطلب تجربة مجانية</a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section dark" id="courses">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="kicker">اختار مسارك</p>
+              <h2>سواء بتبدأ من الصفر أو محتاج تنقل شغلك لمستوى أعلى.</h2>
+            </div>
+            <p>
+              فريقنا يساعدك تعرف أنسب كورس حسب مستواك، هدفك، وقتك، والجهاز
+              المتاح معاك.
+            </p>
+          </div>
+
+          <div class="courses">
+            <article class="course-card">
+              <h3>كورس الجرافيك للمبتدئين</h3>
+              <p>
+                مناسب للي عايز يبدأ صح ويتعلم البرامج والأساسيات والتطبيق العملي
+                خطوة بخطوة.
+              </p>
+              <ul>
+                <li>Photoshop, Illustrator, InDesign</li>
+                <li>أساسيات التصميم والألوان والتكوين</li>
+                <li>تاسكات ومتابعة وتقييم مستمر</li>
+              </ul>
+            </article>
+            <article class="course-card">
+              <h3>المستوى المتقدم</h3>
+              <p>
+                للمصمم اللي عنده أساسيات وعايز يفهم الحملات، البورتفوليو،
+                والاشتغال بشكل أقرب للسوق.
+              </p>
+              <ul>
+                <li>تحليل مشاريع وريفرنسات</li>
+                <li>ورش AI وسوشيال ميديا وهوية</li>
+                <li>تطوير portfolio وBehance</li>
+              </ul>
+            </article>
+            <article class="course-card">
+              <h3>ورش متخصصة</h3>
+              <p>
+                ورش مركزة بتقوي نقطة محددة: سوق العمل، الفريلانس، بناء
+                البورتفوليو، أو استخدام AI في التصميم.
+              </p>
+              <ul>
+                <li>Live على مشاريع حقيقية</li>
+                <li>تطبيق عملي مباشر</li>
+                <li>Feedback واضح وقابل للتنفيذ</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section soft">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="kicker">التجربة التعليمية</p>
+              <h2>الأونلاين هنا مش عزلة. ده نظام متابعة كامل.</h2>
+            </div>
+            <p>
+              لو قلقان من الأونلاين، الفرق الحقيقي مش في مكان المحاضرة. الفرق في
+              المتابعة، سرعة الرد، وضوح التقييم، والمجتمع اللي بيسندك.
+            </p>
+          </div>
+
+          <div class="experience">
+            <article class="experience-item">
+              <h3>Portal خاص بكل طالب</h3>
+              <p>
+                تتابع حضورك، تاسكاتك، تقييمك، نقاطك، وأي حاجة فاتتك عشان تعرف
+                ترجع تعوضها وترفع مستواك.
+              </p>
+            </article>
+            <article class="experience-item">
+              <h3>Community ومدربين مساعدين</h3>
+              <p>
+                جروبات واتساب وديسكورد، مدربين مساعدين على نفس المحتوى، ونظام
+                واضح يقلل العشوائية.
+              </p>
+            </article>
+            <article class="experience-item">
+              <h3>تطبيق عملي على احتياج السوق</h3>
+              <p>
+                بنشتغل على brief، حملات، reference، وتحليل بدل ما تبقى الحصة
+                مجرد شرح أداة.
+              </p>
+            </article>
+            <article class="experience-item">
+              <h3>ترشيحات للمميزين</h3>
+              <p>
+                الطلاب المتميزين بيكون لهم أولوية في الترشيحات حسب مستواهم
+                والفرص المتاحة.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="consultation">
+        <div class="container cta">
+          <div class="cta-grid">
+            <div>
+              <p class="kicker" style="color: #ffd18a">ابدأ من السؤال الصح</p>
+              <h2>مش عارف تبدأ منين؟ خلينا نرشحلك أنسب مسار.</h2>
+              <p>
+                ابعت مستواك الحالي، هدفك من تعلم التصميم، والجهاز المتاح معاك.
+                هنقولك الطريق الأقرب ليك ونوضحلك تجربة Saber Group خطوة بخطوة.
+              </p>
+            </div>
+            <div class="actions">
+              <a class="button primary" href="https://chat.engsaber.space/">كلم فريق Saber Group</a>
+              <a class="button secondary" href="#courses">شوف المسارات</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-row">
+        <span>Saber Group Courses Academy</span>
+        <span>Graphic Design education powered by AI</span>
+      </div>
+    </footer>
+  </body>
+</html>
