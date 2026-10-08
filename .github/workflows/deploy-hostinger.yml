@@ -11,24 +11,19 @@ permissions:
 
 jobs:
   deploy:
-    name: Build and upload
+    name: Upload and verify
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
+      # dist/ holds the production build that goes live as-is (src/ is an older version of the
+      # site, so the deploy does not rebuild it).
+      - name: Check the build
+        run: |
+          test -f dist/index.html
+          for f in $(grep -o '/assets/[^"]*' dist/index.html); do test -f "dist$f" || { echo "missing dist$f"; exit 1; }; done
 
       - name: Upload to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -53,3 +48,16 @@ jobs:
             readme.html
             xmlrpc.php
             .user.ini
+
+      # Hostinger's bot protection answers plain curl with 403, so check with a browser user agent.
+      - name: Check the live site
+        run: |
+          EXPECT="$(grep -o 'assets/index-[^"]*\.js' dist/index.html | head -1)"
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+          for _ in $(seq 1 24); do
+            PAGE="$(curl -fsS -A "$UA" -H "Cache-Control: no-cache" "https://sabergroupacademy.com/?v=$RANDOM" || true)"
+            if [[ "$PAGE" == *"$EXPECT"* ]]; then echo "live: serves $EXPECT"; exit 0; fi
+            sleep 5
+          done
+          echo "the live site does not serve $EXPECT after 2 minutes" >&2
+          exit 1

@@ -1,6 +1,10 @@
 # Saber Group Landing Page
 
-React/Vite landing page for Saber Group Courses Academy.
+Landing page for Saber Group Courses Academy, live at https://sabergroupacademy.com/.
+
+`dist/` is the production build that goes live: every push to `main` uploads it to Hostinger
+(see below). To change the site, replace the contents of `dist/` with a new build and push.
+`src/` holds an older version of the React/Vite source; the deploy does not rebuild it.
 
 ## Local development
 
@@ -9,17 +13,10 @@ npm install
 npm run dev
 ```
 
-## Hostinger upload
-
-```bash
-npm run build
-```
-
-Upload the contents of the generated `dist/` folder to Hostinger `public_html`.
 
 ## GitHub Actions deploy
 
-The workflow at `.github/workflows/deploy-hostinger.yml` builds the site and uploads `dist/` to Hostinger on every push to `main`.
+The workflow at `.github/workflows/deploy-hostinger.yml` uploads `dist/` to Hostinger on every push to `main`, then checks that the live site serves the new build. It only replaces files it uploaded itself, so WordPress and the subdomain folders in `public_html` stay untouched.
 
 Add these repository secrets in GitHub:
 
