@@ -6,6 +6,21 @@ Landing page for Saber Group Courses Academy, live at https://sabergroupacademy.
 (see below). To change the site, replace the contents of `dist/` with a new build and push.
 `src/` holds an older version of the React/Vite source; the deploy does not rebuild it.
 
+## Saber Group Tools section (#tools)
+
+The section about our own apps (HORIX now, the Lightroom, Illustrator, Premiere and After Effects
+alternatives on the way) lives in `sections/tools/` (`section.html`, `section.css`; images in
+`dist/assets/tools/`). It is added to the built bundle, after the programs section, with an
+"أدواتنا" link in the header and footer menus:
+
+```bash
+python3 -I scripts/add-tools-section.py
+```
+
+Run it again after editing the HTML or CSS: it replaces the previous copy and renames the JS and CSS
+files with a new hash so browsers load the update. When `dist/` is replaced by a new build of the
+site, run it once more (or add the section to that source).
+
 ## Local development
 
 ```bash
