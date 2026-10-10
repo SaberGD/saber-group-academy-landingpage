@@ -31,10 +31,16 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+// Other apps live in folders of this site (HORIX at /horix/, its download page at /downloads/):
+// leave their pages and files to the network and their own caching.
+const OTHER_APPS = ["/horix", "/downloads"];
+
 self.addEventListener("fetch", (event) => {
   const { request } = event;
 
   if (request.method !== "GET") return;
+  const path = new URL(request.url).pathname;
+  if (OTHER_APPS.some((p) => path === p || path.startsWith(p + "/"))) return;
 
   if (request.mode === "navigate") {
     event.respondWith(
